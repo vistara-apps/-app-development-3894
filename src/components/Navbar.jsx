@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { MessageCircle, Trophy, User, Database, Crown } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import MobileMenu from './MobileMenu';
 
 function Navbar() {
   const { user, logout, setShowAuthModal } = useAuth();
@@ -17,7 +18,8 @@ function Navbar() {
             SportsTalk
           </Link>
           
-          <div className="nav-links">
+          {/* Desktop Navigation */}
+          <div className="nav-links hidden md:flex">
             <Link 
               to="/debates" 
               className={`nav-link ${isActive('/debates') ? 'active' : ''}`}
@@ -74,6 +76,12 @@ function Navbar() {
             )}
             
             <ConnectButton />
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="flex items-center gap-4 md:hidden">
+            <ConnectButton />
+            <MobileMenu />
           </div>
         </div>
       </div>
