@@ -7,6 +7,7 @@ import Profile from './pages/Profile'
 import Premium from './pages/Premium'
 import ExclusiveData from './pages/ExclusiveData'
 import AuthModal from './components/AuthModal'
+import SkipLink from './components/SkipLink'
 import { useAuth } from './contexts/AuthContext'
 
 function App() {
@@ -14,15 +15,18 @@ function App() {
 
   return (
     <div className="App">
+      <SkipLink />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/debates" element={<Debates />} />
-        <Route path="/debate/:id" element={<DebateRoom />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/premium" element={<Premium />} />
-        <Route path="/data" element={<ExclusiveData />} />
-      </Routes>
+      <main id="main-content" className="min-h-screen">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/debates" element={<Debates />} />
+          <Route path="/debate/:id" element={<DebateRoom />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/premium" element={<Premium />} />
+          <Route path="/data" element={<ExclusiveData />} />
+        </Routes>
+      </main>
       {showAuthModal && <AuthModal />}
     </div>
   )
